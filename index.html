@@ -2,304 +2,355 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#1457c7">
+    <meta name="description" content="کافی نت حافظ؛ خدمات اینترنتی و اداری. ارتباط از طریق ایتا، روبیکا و بله.">
     <title>کافی نت حافظ</title>
 
     <style>
-        * {
-            box-sizing: border-box;
+        :root {
+            --blue: #1457c7;
+            --ink: #1c2330;
+            --muted: #5b6575;
+            --line: #e3e8ef;
+            --bg: #eef3f9;
+            --card: #ffffff;
+            --eitaa: #c2570a;
+            --rubika: #1769c2;
+            --bale: #15803d;
+            --focus: #ffb703;
         }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        html { -webkit-text-size-adjust: 100%; }
 
         body {
             margin: 0;
-            font-family: Tahoma, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
+            font-family: Vazirmatn, Tahoma, "Segoe UI", Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            padding: 16px;
+            padding-top: max(16px, env(safe-area-inset-top));
+            padding-bottom: max(16px, env(safe-area-inset-bottom));
         }
 
         .card {
             width: 100%;
-            max-width: 420px;
-            background: white;
-            border-radius: 25px;
-            padding: 30px 22px;
+            max-width: 440px;
+            margin: auto;               /* وسط‌چین امن؛ در صفحه‌های کوتاه بالای کارت بریده نمی‌شود */
+            background: var(--card);
+            border-radius: 24px;
+            padding: 28px 20px 22px;
             text-align: center;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(20, 40, 80, .12);
         }
 
         .logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 15px;
-            background: #1677ff;
-            color: white;
+            width: 80px; height: 80px;
+            margin: 0 auto 12px;
+            background: var(--blue);
+            color: #fff;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            font-weight: bold;
+            display: grid; place-items: center;
+            font-size: 38px; font-weight: bold;
         }
 
-        h1 {
-            margin: 10px 0;
-            color: #222;
-            font-size: 27px;
-        }
+        h1 { margin: 0 0 4px; font-size: 26px; line-height: 1.4; }
+
+        .tagline { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
 
         .address {
-            color: #666;
-            line-height: 2;
+            margin: 0 0 20px;
+            padding: 12px 14px;
+            background: #f6f8fb;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            color: var(--muted);
             font-size: 14px;
-            margin-bottom: 20px;
+            line-height: 2;
         }
 
-        .phone {
-            display: block;
-            text-decoration: none;
-            color: #1677ff;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
-
-        .contact-btn {
-            display: block;
+        /* دکمه‌ها */
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
             width: 100%;
-            padding: 15px;
-            margin-bottom: 25px;
+            min-height: 54px;
+            padding: 12px 16px;
+            border: 0;
             border-radius: 14px;
-            background: #222;
-            color: white;
+            font: inherit; font-size: 17px; font-weight: bold;
+            color: #fff;
             text-decoration: none;
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .title {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
-        .social {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .social a,
-        .social button {
-            width: 100%;
-            text-decoration: none;
-            color: white;
-            padding: 15px;
-            border-radius: 14px;
-            font-size: 17px;
-            font-weight: bold;
-            font-family: Tahoma, Arial, sans-serif;
-            border: none;
             cursor: pointer;
+            transition: transform .1s ease, filter .15s ease;
+        }
+        .btn:active { transform: scale(.98); }
+        .btn:hover { filter: brightness(1.08); }
+
+        .btn:focus-visible,
+        .link-btn:focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
         }
 
-        .eitaa {
-            background: #f39c12;
+        .call { background: var(--ink); }
+
+        .phone-num {
+            direction: ltr;
+            unicode-bidi: isolate;
+            letter-spacing: .5px;
         }
 
-        .rubika {
-            background: #2196f3;
+        .row { display: flex; gap: 10px; margin-top: 10px; }
+        .btn-sm {
+            flex: 1;
+            min-height: 46px;
+            font-size: 14px;
+            background: #fff;
+            color: var(--ink);
+            border: 1.5px solid var(--line);
+        }
+        .btn-sm:hover { filter: none; background: #f6f8fb; }
+
+        .section-title {
+            margin: 26px 0 12px;
+            font-size: 15px;
+            color: var(--muted);
+            font-weight: normal;
         }
 
-        .bale {
-            background: #20b26b;
+        .social { display: flex; flex-direction: column; gap: 10px; }
+
+        .eitaa  { background: var(--eitaa); }
+        .rubika { background: var(--rubika); }
+        .bale   { background: var(--bale); }
+
+        .badge {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.22);
+            display: grid; place-items: center;
+            font-size: 14px;
         }
 
-        .social a:hover,
-        .social button:hover,
-        .contact-btn:hover {
-            opacity: 0.85;
-        }
+        .chev { margin-inline-start: auto; transition: transform .2s ease; font-size: 13px; }
+        .rubika[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
         /* منوی روبیکا */
         .rubika-menu {
             display: none;
-            margin-top: 12px;
-            padding: 18px;
-            background: #f5f7fa;
-            border-radius: 18px;
-            border: 1px solid #e1e5ea;
-            animation: menuOpen 0.2s ease;
-        }
-
-        .rubika-menu.show {
-            display: block;
-        }
-
-        .rubika-title {
-            font-size: 17px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 12px;
-        }
-
-        .rubika-option {
-            display: block;
-            width: 100%;
             padding: 14px;
-            margin-bottom: 10px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-family: Tahoma, Arial, sans-serif;
-            font-size: 15px;
-            font-weight: bold;
-            cursor: pointer;
+            background: #f1f6fd;
+            border: 1px solid #cfe0f6;
+            border-radius: 16px;
+            animation: menuOpen .2s ease;
         }
+        .rubika-menu.show { display: block; }
 
-        .app-option {
-            background: #2196f3;
-            color: white;
-        }
+        .rubika-title { margin: 0 0 10px; font-size: 14px; color: var(--muted); }
 
-        .web-option {
-            background: white;
-            color: #2196f3;
-            border: 2px solid #2196f3;
-        }
-
-        .close-option {
-            width: 100%;
+        .opt {
+            display: flex; align-items: center; justify-content: center;
+            min-height: 50px;
+            margin-bottom: 8px;
             padding: 10px;
-            border: none;
-            background: transparent;
-            color: #777;
-            font-family: Tahoma, Arial, sans-serif;
-            cursor: pointer;
+            border-radius: 12px;
+            font: inherit; font-size: 15px; font-weight: bold;
+            text-decoration: none;
+        }
+        .opt:last-of-type { margin-bottom: 0; }
+        .app-option { background: var(--rubika); color: #fff; }
+        .web-option { background: #fff; color: var(--rubika); border: 2px solid var(--rubika); }
+        .opt:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+        .toast {
+            position: fixed;
+            inset-inline: 16px;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            max-width: 360px;
+            margin: 0 auto;
+            padding: 12px 16px;
+            background: var(--ink);
+            color: #fff;
+            border-radius: 12px;
             font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+            transition: opacity .2s ease, transform .2s ease;
         }
+        .toast.show { opacity: 1; transform: none; }
 
-        .close-option:hover {
-            color: #333;
-        }
-
-        .footer {
-            margin-top: 25px;
-            color: #999;
-            font-size: 12px;
-        }
+        .footer { margin: 22px 0 0; color: #7a8493; font-size: 12px; }
 
         @keyframes menuOpen {
-            from {
-                opacity: 0;
-                transform: translateY(-5px);
-            }
+            from { opacity: 0; transform: translateY(-4px); }
+            to   { opacity: 1; transform: none; }
+        }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @media (max-width: 360px) {
+            .card { padding: 22px 14px 18px; }
+            h1 { font-size: 23px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
         }
     </style>
 </head>
 
 <body>
 
-<div class="card">
+<main class="card">
 
-    <div class="logo">ح</div>
+    <div class="logo" aria-hidden="true">ح</div>
 
     <h1>کافی نت حافظ</h1>
+    <p class="tagline">خدمات اینترنتی و اداری</p>
 
-    <div class="address">
-        بلوار کریم خان زند، روبه‌رو بیمارستان شهید فقیهی (سعدی)<br>
+    <p class="address" id="addressText">
+        بلوار کریم‌خان زند، روبه‌روی بیمارستان شهید فقیهی (سعدی)<br>
         طبقه زیرین بانک شهر
-    </div>
+    </p>
 
-    <a class="phone" href="tel:09056481654">
-        📞 09056481654
+    <a class="btn call" href="tel:09056481654">
+        <span aria-hidden="true">📞</span>
+        تماس با ما
+        <span class="phone-num">0905 648 1654</span>
     </a>
 
-    <a class="contact-btn" href="tel:09056481654">
-        📱 افزودن / تماس با کافی نت حافظ
-    </a>
-
-    <div class="title">
-        از طریق پیام‌رسان موردنظر با ما در ارتباط باشید
+    <div class="row">
+        <button class="btn btn-sm" type="button" id="saveContact">
+            <span aria-hidden="true">➕</span> ذخیره در مخاطبین
+        </button>
+        <button class="btn btn-sm" type="button" id="copyAddress">
+            <span aria-hidden="true">📋</span> کپی آدرس
+        </button>
     </div>
+
+    <h2 class="section-title">پیام دادن در پیام‌رسان</h2>
 
     <div class="social">
 
-        <!-- ایتا -->
-        <a class="eitaa"
-           href="https://eitaa.com/hafez_cafe"
-           target="_blank">
-            🟠 ایتا
+        <a class="btn eitaa" href="https://eitaa.com/hafez_cafe" target="_blank" rel="noopener noreferrer">
+            <span class="badge" aria-hidden="true">ا</span>
+            ایتا
         </a>
 
-
-        <!-- روبیکا -->
-        <button class="rubika" onclick="openRubika()">
-            🔵 روبیکا
+        <button class="btn rubika" type="button" id="rubikaBtn"
+                aria-expanded="false" aria-controls="rubikaMenu">
+            <span class="badge" aria-hidden="true">ر</span>
+            روبیکا
+            <span class="chev" aria-hidden="true">▼</span>
         </button>
 
-        <!-- گزینه‌های روبیکا -->
-        <div id="rubikaMenu" class="rubika-menu">
+        <div id="rubikaMenu" class="rubika-menu" hidden>
+            <p class="rubika-title">روش ورود به روبیکا را انتخاب کنید</p>
 
-            <div class="rubika-title">
-                نحوه ورود به روبیکا را انتخاب کنید
-            </div>
-
-            <!-- ورود به اپ -->
-            <a class="rubika-option app-option"
-               href="https://rubika.ir/hafez_cafe"
-               target="_blank">
-                📱 ورود به اپ روبیکا
+            <a class="opt app-option" href="https://rubika.ir/hafez_cafe" target="_blank" rel="noopener noreferrer">
+                باز کردن در اپ روبیکا
             </a>
 
-            <!-- ورود از طریق وب -->
-            <a class="rubika-option web-option"
-               href="https://web.rubika.ir"
-               target="_blank">
-                🌐 ورود از طریق وب
+            <a class="opt web-option" href="https://web.rubika.ir" target="_blank" rel="noopener noreferrer">
+                باز کردن در نسخه وب
             </a>
-
-            <button class="close-option"
-                    onclick="closeRubika()">
-                ✖ بستن
-            </button>
-
         </div>
 
-
-        <!-- بله -->
-        <a class="bale"
-           href="https://ble.ir/hafez_cafe"
-           target="_blank">
-            🟢 بله
+        <a class="btn bale" href="https://ble.ir/hafez_cafe" target="_blank" rel="noopener noreferrer">
+            <span class="badge" aria-hidden="true">ب</span>
+            بله
         </a>
 
     </div>
 
-    <div class="footer">
-        کافی نت حافظ | خدمات اینترنتی و اداری
-    </div>
+    <p class="footer">کافی نت حافظ | خدمات اینترنتی و اداری</p>
 
-</div>
+</main>
 
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+    (function () {
+        var menu = document.getElementById("rubikaMenu");
+        var btn = document.getElementById("rubikaBtn");
+        var toastEl = document.getElementById("toast");
+        var toastTimer;
 
-    function openRubika() {
-        document.getElementById("rubikaMenu").classList.add("show");
-    }
+        function toast(msg) {
+            toastEl.textContent = msg;
+            toastEl.classList.add("show");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 2200);
+        }
 
-    function closeRubika() {
-        document.getElementById("rubikaMenu").classList.remove("show");
-    }
+        /* منوی روبیکا: با یک بار لمس باز/بسته می‌شود؛ با Esc هم بسته می‌شود */
+        function setMenu(open) {
+            menu.hidden = !open;
+            menu.classList.toggle("show", open);
+            btn.setAttribute("aria-expanded", open ? "true" : "false");
+        }
 
+        btn.addEventListener("click", function () {
+            setMenu(menu.hidden);
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && !menu.hidden) { setMenu(false); btn.focus(); }
+        });
+
+        /* کپی متن با جایگزین برای مرورگرهای قدیمی */
+        function copyText(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise(function (resolve, reject) {
+                var ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand("copy") ? resolve() : reject(); }
+                catch (err) { reject(err); }
+                document.body.removeChild(ta);
+            });
+        }
+
+        document.getElementById("copyAddress").addEventListener("click", function () {
+            var text = "بلوار کریم‌خان زند، روبه‌روی بیمارستان شهید فقیهی (سعدی)، طبقه زیرین بانک شهر";
+            copyText(text).then(
+                function () { toast("آدرس کپی شد"); },
+                function () { toast("کپی انجام نشد"); }
+            );
+        });
+
+        /* ذخیره مخاطب: فایل vCard دانلود می‌شود و گوشی خودش پیشنهاد افزودن می‌دهد */
+        document.getElementById("saveContact").addEventListener("click", function () {
+            var vcf = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                "FN:کافی نت حافظ",
+                "ORG:کافی نت حافظ",
+                "TEL;TYPE=CELL:09056481654",
+                "END:VCARD"
+            ].join("\r\n");
+
+            var blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "hafez-cafe.vcf";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+            toast("فایل مخاطب آماده شد");
+        });
+    })();
 </script>
 
 </body>

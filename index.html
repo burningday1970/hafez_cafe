@@ -92,13 +92,18 @@
             gap: 12px;
         }
 
-        .social a {
+        .social a,
+        .social button {
+            width: 100%;
             text-decoration: none;
             color: white;
             padding: 15px;
             border-radius: 14px;
             font-size: 17px;
             font-weight: bold;
+            font-family: Tahoma, Arial, sans-serif;
+            border: none;
+            cursor: pointer;
         }
 
         .eitaa {
@@ -114,14 +119,88 @@
         }
 
         .social a:hover,
+        .social button:hover,
         .contact-btn:hover {
             opacity: 0.85;
+        }
+
+        /* منوی روبیکا */
+        .rubika-menu {
+            display: none;
+            margin-top: 12px;
+            padding: 18px;
+            background: #f5f7fa;
+            border-radius: 18px;
+            border: 1px solid #e1e5ea;
+            animation: menuOpen 0.2s ease;
+        }
+
+        .rubika-menu.show {
+            display: block;
+        }
+
+        .rubika-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .rubika-option {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .app-option {
+            background: #2196f3;
+            color: white;
+        }
+
+        .web-option {
+            background: white;
+            color: #2196f3;
+            border: 2px solid #2196f3;
+        }
+
+        .close-option {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: #777;
+            font-family: Tahoma, Arial, sans-serif;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .close-option:hover {
+            color: #333;
         }
 
         .footer {
             margin-top: 25px;
             color: #999;
             font-size: 12px;
+        }
+
+        @keyframes menuOpen {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -153,18 +232,49 @@
 
     <div class="social">
 
+        <!-- ایتا -->
         <a class="eitaa"
            href="https://eitaa.com/hafez_cafe"
            target="_blank">
             🟠 ایتا
         </a>
 
-        <a class="rubika"
-           href="https://rubika.ir/hafez_cafe"
-           target="_blank">
-            🔵 روبیکا
-        </a>
 
+        <!-- روبیکا -->
+        <button class="rubika" onclick="openRubika()">
+            🔵 روبیکا
+        </button>
+
+        <!-- گزینه‌های روبیکا -->
+        <div id="rubikaMenu" class="rubika-menu">
+
+            <div class="rubika-title">
+                نحوه ورود به روبیکا را انتخاب کنید
+            </div>
+
+            <!-- ورود به اپ -->
+            <a class="rubika-option app-option"
+               href="https://rubika.ir/hafez_cafe"
+               target="_blank">
+                📱 ورود به اپ روبیکا
+            </a>
+
+            <!-- ورود از طریق وب -->
+            <a class="rubika-option web-option"
+               href="https://web.rubika.ir"
+               target="_blank">
+                🌐 ورود از طریق وب
+            </a>
+
+            <button class="close-option"
+                    onclick="closeRubika()">
+                ✖ بستن
+            </button>
+
+        </div>
+
+
+        <!-- بله -->
         <a class="bale"
            href="https://ble.ir/hafez_cafe"
            target="_blank">
@@ -179,6 +289,18 @@
 
 </div>
 
+
+<script>
+
+    function openRubika() {
+        document.getElementById("rubikaMenu").classList.add("show");
+    }
+
+    function closeRubika() {
+        document.getElementById("rubikaMenu").classList.remove("show");
+    }
+
+</script>
+
 </body>
 </html>
-```
